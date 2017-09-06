@@ -21,10 +21,10 @@ public class CustomUserDetailService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		logger.info("loadUserByUsername:{}",username);
-		if ("kit".equals(username)) {
+		if ("admin".equals(username)) {
 			Collection<GrantedAuthority> authorities = new ArrayList<>();
 			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-			return new User(username, "1234", authorities);
+			return new User(username, "password", authorities);
 		}else {
 			throw new UsernameNotFoundException(username);
 		}
